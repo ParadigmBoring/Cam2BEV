@@ -1,0 +1,30 @@
+input-training: [../data/zedcam_F/track1/train/front]
+label-training: ../data/zedcam_F/track1/train/bev+occlusion
+max-samples-training: 100000
+input-validation: [../data/zedcam_F/track1/val/front]
+label-validation: ../data/zedcam_F/track1/val/bev+occlusion
+max-samples-validation: 10000
+
+image-shape: [256, 512]
+one-hot-palette-input: one_hot_conversion/convert_10_carla.xml
+one-hot-palette-label: one_hot_conversion/convert_3+occl_carla.xml
+
+model: architecture/uNetXST.py
+# unetxst-homographies: ../preprocessing/homography_converter/uNetXST_homographies/zedcam_F.py
+epochs: 100
+batch-size: 5
+learning-rate: 1e-4
+loss-weights: [1.00752063, 5.06392476, 1.15378408, 1.16118375]
+early-stopping-patience: 20
+
+save-interval: 5
+output-dir: output
+
+# for training continuation, evaluation and prediction only
+class-names: [road, vehicle, obstacle, occluded]
+# model-weights:
+
+# for predict.py only
+input-testing: [../data/zedcam_F/val/test] #front
+max-samples-testing: 10000
+# prediction-dir:

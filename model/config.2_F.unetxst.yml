@@ -1,8 +1,8 @@
-input-training: [../data/2_F/train/front]
-label-training: ../data/2_F/train/bev+occlusion
+input-training: [../data/zedcam_F/example/train/front]
+label-training: ../data/zedcam_F/example/train/bev+occlusion
 max-samples-training: 100000
-input-validation: [../data/2_F/val/front]
-label-validation: ../data/2_F/val/bev+occlusion
+input-validation: [../data/zedcam_F/example/val/front]
+label-validation: ../data/zedcam_F/example/bev+occlusion
 max-samples-validation: 10000
 
 image-shape: [256, 512]
@@ -21,10 +21,10 @@ save-interval: 5
 output-dir: output
 
 # for training continuation, evaluation and prediction only
-class-names: [road, vehicle, obstacle, occluded]
+class-names: [road, obstacle, lane line, occluded]
 # model-weights:
 
 # for predict.py only
-input-testing: [../data/2_F/val/front]
+input-testing: [../data/zedcam_F/example/val/test] #front
 max-samples-testing: 10000
 # prediction-dir:

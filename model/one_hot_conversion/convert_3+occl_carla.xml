@@ -1,0 +1,19 @@
+<IKALabelDefinition>
+
+    <SLabel Name="road"             fromColour="81   1   80"    toValue="1" /> <!-- ground -->
+
+    <SLabel Name="obstacle"         fromColour="  0   0   0"    toValue="2" /> <!-- car -->
+    <SLabel Name="person"           fromColour="255   0   0"    toValue="2" />
+    <SLabel Name="car"              fromColour="255 255 255"    toValue="2" />
+    <SLabel Name="building"         fromColour=" 70  70  70"    toValue="2" />
+    <SLabel Name="terrain"          fromColour="152 251 152"    toValue="2" />
+
+    <SLabel Name="lane line"        fromColour="251 171  30"    toValue="3" /> <!-- static -->
+    <SLabel Name="pot hole"         fromColour="150 120  90"    toValue="3" />
+    <SLabel Name="sky"              fromColour=" 70 130 180"    toValue="3" />
+    <SLabel Name="vegetation"       fromColour="107 142  35"    toValue="3" />
+    <SLabel Name="ramp"             fromColour="230 150 140"    toValue="3" />
+
+    <SLabel Name="occluded"         fromColour="150 150 150"    toValue="4" /> <!-- occlusion -->
+
+</IKALabelDefinition>
