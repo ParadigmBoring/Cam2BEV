@@ -1,18 +1,19 @@
 # camera calibration matrix K
-fx: 376
-fy: 376
-px: 376
-py: 376
-#[[540.   0. 540.]
-# [  0. 540. 480.]
-# [  0.   0.   1.]]
+fx: 128
+fy: 256
+px: 128
+py: 256
+
+#try again with 1/2
+
+# network input maybe 128 x 512
 
 # rotation matrix R (in deg) (drone is assumed to be at 90° pitch, 90° roll)
-yaw:    0.0
+yaw:   0.0
 pitch: 90.0
-roll: 270.0
+roll:  90.0
 
 # vehicle coords of camera origin
-XCam:  10.0
-YCam:   0.0
-ZCam:  10.0
+XCam:  35.0
+YCam:  0.0
+ZCam:  30.0
