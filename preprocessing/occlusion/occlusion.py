@@ -34,22 +34,21 @@ import cv2
 import skimage.draw
 
 
-BLOCKING_LABELS = ["building", "obstcale"]
+BLOCKING_LABELS = [] # ['terrain', 'person', 'building']
 # will be visible behind small blocking objects (e.g. cars)
-TALL_NON_BLOCKING_LABELS = ["ramp", 'pot hole']
+TALL_NON_BLOCKING_LABELS = ['person', 'ramp', 'obstcale']
 COLORS = {
-    "vegetation": (107, 142, 35),
-    "lane line": (251, 171, 30),
-    "occluded": (150, 150, 150),
-    "pot hole": (150, 120, 90),
-    "terrain": (152, 251, 152),
-    "building": (70, 70, 70),
-    "ramp": (230, 150, 140),
-    "car": (255, 255, 255),
-    "ground": (81, 1, 80),
-    "sky": (70, 130, 180),
-    "person": (255, 0, 0),
-    "obstcale": (0, 0, 0), # TODO: Add me to C file
+    'vegetation': (107, 142, 35),
+    'lane line': (250, 170, 30),
+    'occluded': (150, 150, 150),
+    'pot hole': (150, 120, 90),
+    'terrain': (152, 251, 152),
+    'building': (70, 70, 70),
+    'ramp': (230, 150, 140),
+    'ground': (81, 0, 81),
+    'sky': (70, 130, 180),
+    'person': (255, 0, 0),
+    'obstcale': (0, 0, 0), # TODO: Add me to C file
 }
 
 DUMMY_COLOR = tuple(np.random.randint(0, 256, 3))
@@ -60,7 +59,7 @@ while DUMMY_COLOR in COLORS.values():
 class Camera:
     def __init__(self, config, frame, pxPerM):
 
-        self.origin = (frame[0] + config["XCam"] * pxPerM[0],
+        self.origin = (frame[0] + config["XCam"] * pxPerM[0] - 75,
                        frame[1] - config["YCam"] * pxPerM[1])
         self.yaw = -config["yaw"]
         self.fov = 2.0 * np.arctan(config["px"] / config["fx"]) * 180.0 / np.pi
@@ -106,7 +105,7 @@ def castRay(fromPoint, toPoint, inputImg, outputImg):
             if (inputImg[px[1], px[0], :] == COLORS[label]).all():
 
                 # if car, continue ray to look for more blocking objects, else stop ray
-                if label == "car":
+                if label == "obstcale":
                     if stopTransfer:  # if car behind another car, skip
                         continue
                     else:  # if first car in line of ray

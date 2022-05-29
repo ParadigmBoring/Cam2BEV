@@ -9,7 +9,7 @@ py: 188
 
 # rotation matrix R (in deg)
 yaw:    0.0
-pitch: 58.0 # (90 - carla pitch)
+pitch: 60.2 # (90 - carla pitch)
 roll:   0.0
 
 # vehicle coords of camera origin

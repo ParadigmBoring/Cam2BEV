@@ -9,7 +9,7 @@ image-shape: [512, 256]
 one-hot-palette-input: one_hot_conversion/convert_10_carla.xml
 one-hot-palette-label: one_hot_conversion/convert_3+occl_carla.xml
 
-model: architecture/deeplab_xception.py
+model: architecture/deeplab_mobilenet.py
 # unetxst-homographies: ../preprocessing/homography_converter/uNetXST_homographies/zedcam_F.py
 epochs: 100
 batch-size: 5

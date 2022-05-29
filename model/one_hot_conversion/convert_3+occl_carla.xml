@@ -1,6 +1,6 @@
 <IKALabelDefinition>
 
-    <SLabel Name="road"             fromColour="81   1   80"    toValue="1" /> <!-- ground -->
+    <SLabel Name="road"             fromColour="81   0   81"    toValue="1" /> <!-- ground -->
 
     <SLabel Name="obstacle"         fromColour="  0   0   0"    toValue="2" /> <!-- car -->
     <SLabel Name="person"           fromColour="255   0   0"    toValue="2" />

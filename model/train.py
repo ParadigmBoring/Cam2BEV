@@ -38,7 +38,7 @@ import utils
 
 # parse parameters from config file or CLI
 parser = configargparse.ArgParser()
-parser.add("-c", "--config", is_config_file=True, help="config file")
+parser.add("-c", "--config", is_config_file=True, default='config.zedcam_F.deeplab-xception.yml', help="config file")
 parser.add("-it", "--input-training",           type=str, required=True, nargs="+", help="directory/directories of input samples for training")
 parser.add("-lt", "--label-training",           type=str, required=True,            help="directory of label samples for training")
 parser.add("-nt", "--max-samples-training",     type=int, default=None,             help="maximum number of training samples")
@@ -111,12 +111,14 @@ def parse_sample(input_files, label_file):
     inputs = []
     for inp in input_files:
         inp = utils.load_image_op(inp)
+        print(f'resizing (front) input {image_shape_original_input} -> {conf.image_shape}')
         inp = utils.resize_image_op(inp, image_shape_original_input, conf.image_shape, interpolation=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
         inp = utils.one_hot_encode_image_op(inp, conf.one_hot_palette_input)
         inputs.append(inp)
     inputs = inputs[0] if n_inputs == 1 else tuple(inputs)
     # parse and process label image
     label = utils.load_image_op(label_file)
+    print(f'resizing (bev) label {image_shape_original_label} -> {conf.image_shape}')
     label = utils.resize_image_op(label, image_shape_original_label, conf.image_shape, interpolation=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
     label = utils.one_hot_encode_image_op(label, conf.one_hot_palette_label)
     return inputs, label
