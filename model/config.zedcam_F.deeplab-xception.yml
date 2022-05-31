@@ -25,6 +25,6 @@ class-names: [road, obstacle, lane line, occluded]
 # model-weights:
 
 # for predict.py only
-input-testing: [../data/zedcam_F/val/front]
+input-testing: [../data/zedcam_F/val/homography]
 max-samples-testing: 10000
 # prediction-dir:
